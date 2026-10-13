@@ -2,6 +2,11 @@
 
 > **A Real-World Dynamic Multi-View Classroom Dataset Captured with Heterogeneous RGB Cameras for 3D/4D Gaussian Splatting**
 
+**Institution:** Sungkyunkwan University (SKKU)\
+**Captured by:** IMCLab & Department of Immersive Media Engineering\
+**Version:** October 2026\
+**Contact:** Soo-Been Jo (josubin@skku.edu)
+
 XR Classroom is a real-world classroom capture dataset intended for research on multi-view reconstruction, novel-view synthesis, and 3D/4D Gaussian Splatting. It contains dynamic classroom activity recorded with heterogeneous RGB camera systems.
 
 ## Dataset at a glance
