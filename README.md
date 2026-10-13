@@ -8,7 +8,7 @@ Soo-Been Jo<sup>1</sup> · Yeongil Ryu<sup>1</sup> · Isaac Yang<sup>1</sup> · 
 
 <sup>1</sup>Intelligent Multimedia Computing Laboratory (IMCLab), Department of Immersive Media Engineering, Sungkyunkwan University
 
-![Status](https://img.shields.io/badge/status-documentation%20preview-orange)
+![Status](https://img.shields.io/badge/status-data%20upload%20in%20progress-yellow)
 ![Views](https://img.shields.io/badge/views-44-blue)
 ![Modality](https://img.shields.io/badge/modality-RGB-green)
 ![License](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey)
@@ -64,7 +64,7 @@ Recommended: a short looping GIF/MP4 of a 4DGS free-viewpoint render (camera orb
 
 ### Reconstruction
 <p align="center"><img src="images/render.png" width="80%" alt="Render result"></p>
-<p align="center"><em>3DGS free-viewpoint render of the lecture scene.</em></p>
+<p align="center"><em>Free-viewpoint render of the lecture scene from a 3DGS model trained on all 44 views (qualitative result).</em></p>
 
 ---
 
