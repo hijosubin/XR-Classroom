@@ -85,7 +85,7 @@ The dataset contributes:
 
 ## 📷 Capture Setup
 
-A total of 45 cameras were installed: 20 Basler and 25 RealSense. The dataset consists of **44 views**, excluding one Basler view (view 8) that had a capture error.
+A total of 45 cameras were installed: 20 Basler and 25 RealSense. The dataset consists of **44 views**, excluding one Basler view (Basler view 08) that had a capture error.
 
 | | Basler | Intel RealSense |
 |---|---|---|
@@ -107,12 +107,12 @@ A total of 45 cameras were installed: 20 Basler and 25 RealSense. The dataset co
 
 ## 🎬 Lecture Scenarios
 
-| Scenario | Description | Length |
+| Scenario | Description | Released frames |
 |---|---|---|
-| Scenario 1 | The instructor explains using a physical teaching aid (a robot), and learners watch and study it. | ~20 s |
-| Scenario 2 | During the lecture, some learners engage in off-task activities (e.g., reading comics, using a smartphone) that are hard to notice from the instructor's frontal viewpoint. | ~20 s |
+| Scenario 1 | The instructor explains using a physical teaching aid (a robot), and learners watch and study it. | 300 (10 s) |
+| Scenario 2 | During the lecture, some learners engage in off-task activities (e.g., reading comics, using a smartphone) that are hard to notice from the instructor's frontal viewpoint. | 300 (10 s) |
 
-Each sequence is aligned to the synchronized interval shared by all views. The scenes include diverse body motions, such as raising a hand to ask a question, taking notes, observing a teaching aid, talking to a learner sitting behind, and lowering the head. They also contain:
+Each scenario was captured for about 20 seconds. The released sequence is the 10-second interval (300 frames at 30 fps) that is synchronized across all 44 views. The scenes include diverse body motions, such as raising a hand to ask a question, taking notes, observing a teaching aid, talking to a learner sitting behind, and lowering the head. They also contain:
 
 - **Mutual occlusions** between the instructor and multiple learners
 - **Two viewpoint heights and fields of view** from ceiling-mounted and eye-level cameras
@@ -166,12 +166,19 @@ For questions or collaboration, please contact [josubin@skku.edu](mailto:josubin
 
 For quantitative evaluation of novel view synthesis, the center view of each Basler wall rig is held out:
 
-- **Held-out views:** View 3, view 13, view 18
-- **Training views:** All remaining views
+- **Held-out views:** `cam03`, `cam12`, `cam17` (Basler views 03, 13, and 18)
+- **Training views:** All remaining 41 views
 
-The fourth center view (view 8) is excluded from the dataset because of a capture error. Under this protocol, the RGB frames of the held-out views must not be used for initial point generation, color correction, or model optimization; use them only to evaluate novel view synthesis after training.
+The fourth center view (Basler view 08) is excluded from the dataset because of a capture error. Under this protocol, the RGB frames of the held-out views must not be used for initial point generation, color correction, or model optimization; use them only to evaluate novel view synthesis after training.
 
-<!-- TODO: add the view numbering diagram and the per-view camera-type list. -->
+### Camera Indexing
+
+Views are stored as `cam01` to `cam44` in the Neural 3D Video (N3DV) layout, so the data can be loaded directly by N3DV-compatible 3D/4D Gaussian Splatting code. Basler and RealSense cameras were originally numbered separately; the mapping is provided in `cameras.csv` in each package.
+
+| Folders | Camera type | Original view numbers |
+|---|---|---|
+| `cam01` – `cam19` | Basler (ceiling) | Basler views 01–07, 09–20 (view 08 excluded) |
+| `cam20` – `cam44` | RealSense (eye level) | RealSense views 01–25 |
 
 ---
 
