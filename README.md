@@ -16,7 +16,7 @@ Soo-Been Jo<sup>1</sup> · Yeongil Ryu<sup>1</sup> · Isaac Yang<sup>1</sup> · 
 </div>
 
 <!--
-TEASER — uncomment after adding the file.
+TEASER: uncomment after adding the file.
 Recommended: a short looping GIF/MP4 of a 4DGS free-viewpoint render (camera orbiting while the lecturer moves), ~800 px wide, < 10 MB.
 
 <p align="center">
@@ -35,11 +35,11 @@ Recommended: a short looping GIF/MP4 of a 4DGS free-viewpoint render (camera orb
 
 ## ✨ Highlights
 
-- **Real-world lecture, not a studio** — an instructor and multiple learners moving at the same time in an actual classroom, with continuous mutual occlusions and a room-scale capture area.
-- **Heterogeneous camera rig** — ceiling-mounted Basler industrial cameras and eye-level Intel RealSense cameras with different resolutions, fields of view, and color responses.
-- **44 synchronized surrounding views** — all cameras face the center of the classroom and surround it from all sides at two different heights.
-- **Original and compatible versions** — the original heterogeneous videos, plus a version with all views unified to 1920 × 1080 for existing training pipelines.
-- **Built for 3D/4D Gaussian Splatting** — supports static 3DGS and dynamic 4DGS training, with a recommended held-out evaluation split for novel view synthesis.
+- **Real-world lecture, not a studio:** An instructor and multiple learners moving at the same time in an actual classroom, with continuous mutual occlusions and a room-scale capture area.
+- **Heterogeneous camera rig:** Ceiling-mounted Basler industrial cameras and eye-level Intel RealSense cameras with different resolutions, fields of view, and color responses.
+- **44 synchronized surrounding views:** All cameras face the center of the classroom and surround it from all sides at two different heights.
+- **Original and compatible versions:** The original heterogeneous videos, plus a version with all views unified to 1920 × 1080 for existing training pipelines.
+- **Built for 3D/4D Gaussian Splatting:** Supports static 3DGS and dynamic 4DGS training, with a recommended held-out evaluation split for novel view synthesis.
 
 ---
 
@@ -75,9 +75,9 @@ Recommended: a short looping GIF/MP4 of a 4DGS free-viewpoint render (camera orb
 Widely used public multi-view datasets mostly capture a single object or a small space densely, and representative dynamic multi-view datasets use a single camera type in a forward-facing arrangement. XR Classroom instead surrounds a real lecture space from all sides with wide inter-view spacing and two camera types, while an instructor and multiple learners move at the same time.
 
 The dataset contributes:
-1. **Real classroom domain** — dynamic lecture scenes for 3D/4D Gaussian training and evaluation.
-2. **Simultaneously captured multi-view video** — a basis for volumetric video compression and streaming research.
-3. **Heterogeneous camera configuration** — unlike datasets with a unified camera type, resolution, and camera parameters, it supports research on pose estimation and reconstruction pipelines that are robust to heterogeneous conditions.
+1. **Real classroom domain:** Dynamic lecture scenes for 3D/4D Gaussian training and evaluation.
+2. **Simultaneously captured multi-view video:** A basis for volumetric video compression and streaming research.
+3. **Heterogeneous camera configuration:** Unlike datasets with a unified camera type, resolution, and camera parameters, it supports research on pose estimation and reconstruction pipelines that are robust to heterogeneous conditions.
 
 ---
 
@@ -110,7 +110,7 @@ A total of 45 cameras were installed: 20 Basler and 25 RealSense. The dataset co
 | Scenario 1 | The instructor explains using a physical teaching aid (a robot), and learners watch and study it. | ~20 s |
 | Scenario 2 | During the lecture, some learners engage in off-task activities (e.g., reading comics, using a smartphone) that are hard to notice from the instructor's frontal viewpoint. | ~20 s |
 
-Each sequence is aligned to the synchronized interval shared by all views. The scenes include diverse body motions — raising a hand to ask a question, taking notes, observing a teaching aid, talking to a learner sitting behind, and lowering the head — as well as:
+Each sequence is aligned to the synchronized interval shared by all views. The scenes include diverse body motions, such as raising a hand to ask a question, taking notes, observing a teaching aid, talking to a learner sitting behind, and lowering the head. They also contain:
 
 - **Mutual occlusions** between the instructor and multiple learners
 - **Two viewpoint heights and fields of view** from ceiling-mounted and eye-level cameras
@@ -135,15 +135,15 @@ For questions or collaboration, please contact [josubin@skku.edu](mailto:josubin
 
 ### Original and Compatible Versions
 
-- **Original version** — the core of the dataset. It keeps the differences in resolution and camera parameters between camera types.
-- **Compatible version** — all views are unified to 1920 × 1080 for existing dynamic-scene pipelines that assume the same input resolution. The Basler 1952 × 1088 frames are center-cropped by 16 pixels on the left and right and 4 pixels on the top and bottom. Cropping is applied **before** camera parameter estimation, so the provided parameters refer to the compatible version.
+- **Original version:** The core of the dataset. It keeps the differences in resolution and camera parameters between camera types.
+- **Compatible version:** All views are unified to 1920 × 1080 for existing dynamic-scene pipelines that assume the same input resolution. The Basler 1952 × 1088 frames are center-cropped by 16 pixels on the left and right and 4 pixels on the top and bottom. Cropping is applied **before** camera parameter estimation, so the provided parameters refer to the compatible version.
 
 ### Recommended Evaluation Split
 
 For quantitative evaluation of novel view synthesis, the center view of each Basler wall rig is held out:
 
-- **Held-out views:** view 3, view 13, view 18
-- **Training views:** all remaining views
+- **Held-out views:** View 3, view 13, view 18
+- **Training views:** All remaining views
 
 The fourth center view (view 8) is excluded from the dataset because of a capture error. Under this protocol, the RGB frames of the held-out views must not be used for initial point generation, color correction, or model optimization; use them only to evaluate novel view synthesis after training.
 
@@ -199,5 +199,5 @@ We thank our IMCLab members Yeong-Gyu Kim, Priyanka Muthukumaran, Uijoon Jeong, 
 ## 🔗 Contact & Related Links
 
 - **Contact:** Soo-Been Jo ([josubin@skku.edu](mailto:josubin@skku.edu))
-- **IMCLab, Sungkyunkwan University:** https://imclab.skku.edu/
+- **IMCLab, Sungkyunkwan University:** Https://imclab.skku.edu/
 - **Other IMCLab datasets:** VRrooms (IPIU 2025), [Library](https://github.com/reagan99/Library) (IEEE VR 2026 Workshops)
