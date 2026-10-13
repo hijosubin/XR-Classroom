@@ -1,46 +1,184 @@
+<div align="center">
+
 # XR Classroom
 
-> **A Real-World Dynamic Multi-View Classroom Dataset Captured with Heterogeneous RGB Cameras for 3D/4D Gaussian Splatting**
+### A Real-World Dynamic Multi-View Classroom Dataset Captured with Heterogeneous RGB Cameras for 3D/4D Gaussian Splatting
 
-**Institution:** Sungkyunkwan University (SKKU)\
-**Captured by:** IMCLab & Department of Immersive Media Engineering\
-**Version:** October 2026\
-**Contact:** Soo-Been Jo (josubin@skku.edu)
+<!-- TODO: add co-authors in paper order between the two names, e.g. · Young-Il Ryu<sup>1</sup> · Isaac Yang<sup>1</sup> · Rae-Geon Koo<sup>1</sup> -->
 
-XR Classroom is a real-world classroom capture dataset intended for research on multi-view reconstruction, novel-view synthesis, and 3D/4D Gaussian Splatting. It contains dynamic classroom activity recorded with heterogeneous RGB camera systems.
+[**Soo-Been Jo**](mailto:josubin@skku.edu)<sup>1</sup> · [**Eun-Seok Ryu**](https://imclab.skku.edu/)<sup>1</sup>
 
-## Dataset at a glance
+<sup>1</sup>Intelligent Multimedia Computing Laboratory (IMCLab), Department of Immersive Media Engineering, Sungkyunkwan University
 
-- **Scene:** Real-world classroom lecture and activity
-- **Capture:** Heterogeneous multi-view RGB cameras
-- **Views:** Up to 44 camera views per scenario; the available view count varies by scenario
-- **Intended research:** Multi-view reconstruction, 3D/4D Gaussian Splatting, and view synthesis
+![Status](https://img.shields.io/badge/status-documentation%20preview-orange)
+![Views](https://img.shields.io/badge/views-up%20to%2044-blue)
+![Modality](https://img.shields.io/badge/modality-RGB-green)
+![License](https://img.shields.io/badge/license-TBA-lightgrey)
 
-## Capture setup
+</div>
 
-The first XR Classroom session used ceiling-mounted Basler cameras and floor-level Intel RealSense cameras.
+<!--
+TEASER — uncomment after adding the file.
+Recommended: a short looping GIF/MP4 of a 4DGS free-viewpoint render (camera orbiting while the lecturer moves), ~800 px wide, < 10 MB.
 
-| Camera system | Model | Views in Session 1 | Image resolution |
-| --- | --- | ---: | --- |
-| Basler RGB cameras | acA2500-60uc | 19 | 1952 × 1088 |
-| Intel RealSense RGB cameras | L515 | 25 | 1920 × 1080 |
+<p align="center">
+  <img src="images/teaser.gif" width="90%" alt="XR Classroom teaser">
+</p>
+-->
 
-The usable view count can differ across scenarios. Please check the per-scenario metadata distributed with each release.
+---
 
-## Data and access
+## 📢 News
 
-The dataset files are distributed separately from this GitHub repository because the image sequences are large. The download link and package details will be added here when the release package is ready.
+- **[2026.10]** Dataset documentation released. Data packages will be added in upcoming releases.
 
-This repository currently provides dataset documentation. It does not contain the image sequences.
+---
 
-## Citation
+## ✨ Highlights
 
-Citation information will be added when the associated dataset publication is available.
+- **Real-world lecture, not a studio** — human motion during an actual classroom lecture, with furniture, occlusions, and a room-scale capture area.
+- **Heterogeneous camera rig** — ceiling-mounted Basler industrial cameras and floor-level Intel RealSense cameras with different sensors, color responses, and resolutions.
+- **Dense surrounding views** — up to 44 synchronized RGB views per scenario, covering the classroom from multiple heights and directions.
+- **Built for 3D/4D Gaussian Splatting** — suited for dynamic reconstruction, free-viewpoint / novel-view synthesis, and cross-view appearance-consistency research.
 
-## License
+---
 
-Dataset usage terms will be stated with the release package. Until then, please contact the dataset maintainers before redistributing any data.
+## 🖼️ Visual Overview
 
-## Related links
+### Capture Space
+<p align="center"><img src="images/capture_space.jpg" width="85%" alt="Capture space"></p>
+<p align="center"><em>The classroom used for capture, with ceiling-mounted Basler cameras installed on rails. Floor-level Intel RealSense cameras were mounted on tripods for each capture session (not shown).</em></p>
 
-- [Intelligent Multimedia Computing Laboratory, SKKU](https://imclab.skku.edu/)
+### Camera Layout
+<p align="center"><img src="images/camera_layout_top.png" width="75%" alt="Camera layout (oblique view)"></p>
+<p align="center"><img src="images/camera_layout_side.png" width="95%" alt="Camera layout (side view)"></p>
+<p align="center"><em>Estimated camera poses of all views. Top: oblique view of the cameras surrounding the classroom. Bottom: side view showing the ceiling-mounted and floor-level camera rows.</em></p>
+
+### Capture Environment
+<p align="center"><img src="images/capture_environment.png" width="90%" alt="Capture environment"></p>
+<p align="center"><em>Reconstructed classroom point cloud with estimated camera poses.</em></p>
+
+### Multi-View Samples
+<p align="center"><img src="images/multiview_grid.png" width="95%" alt="Multi-view samples"></p>
+<p align="center"><em>Synchronized frames from all 44 views at the same timestamp. The first 19 views (row-major order) are ceiling-mounted Basler cameras; the remaining 25 are floor-level RealSense cameras.</em></p>
+
+### Reconstruction
+<p align="center"><img src="images/render.png" width="80%" alt="Render result"></p>
+<p align="center"><em>Gaussian Splatting render of the lecture scene.</em></p>
+
+---
+
+## 🏫 Overview
+
+**XR Classroom** is a real-world dynamic multi-view dataset captured during actual classroom lecture activity. It provides synchronized multi-view RGB sequences for evaluating multi-view reconstruction, free-viewpoint / novel-view synthesis, and 3D/4D Gaussian Splatting.
+
+Many dynamic multi-view datasets are recorded in controlled studios with uniform backgrounds. XR Classroom instead captures a real lecture space with a **heterogeneous camera system**, so the views differ not only in position but also in sensor characteristics. This makes the dataset suitable for studying how reconstruction methods behave under practical, imperfect multi-view capture conditions — including cross-camera color and appearance inconsistency.
+
+---
+
+## 📷 Capture Setup
+
+| Camera System | Model | Mounting | # Views | Image Resolution |
+|---|---|---|:---:|:---:|
+| Basler | acA2500-60uc | Ceiling-mounted | 19 | 1952 × 1088 |
+| Intel RealSense | L515 | Floor-level | 25 | 1920 × 1080 |
+| **Total** | | | **up to 44** | |
+
+| Property | Description |
+|---|---|
+| Modality | RGB only (depth streams of the RealSense cameras are not included) |
+| Frame Rate | TBA |
+| Sequence Length | TBA |
+| Synchronization | TBA |
+| Camera Parameters | TBA |
+| Environment | Indoor classroom, real lecture activity |
+
+> The usable view count can differ across scenarios. Per-scenario view lists are provided in the metadata of each release.
+
+---
+
+## 📦 Dataset Availability
+
+The image sequences are large and are distributed separately from this repository. Download links will be added here when each package is ready.
+
+| Package | Description | # Views | Frames | Size | Download |
+|---|---|:---:|:---:|:---:|:---:|
+| TBA | | | | | Coming soon |
+
+For early access or collaboration, please contact [josubin@skku.edu](mailto:josubin@skku.edu).
+
+<!--
+Planned directory structure — fill in once the release format is fixed.
+
+```
+XR-Classroom/
+├── scenario_01/
+│   ├── images/
+│   │   ├── cam_00/  000000.png  000001.png  ...
+│   │   └── ...
+│   ├── cameras/              # intrinsics & extrinsics
+│   └── metadata.json         # view list, camera types, sync info
+└── scenario_02/
+    └── ...
+```
+-->
+
+---
+
+## 🎬 Scene Characteristics
+
+- **Heterogeneous sensors:** two camera families with different color responses and resolutions
+- **Multi-height viewpoints:** ceiling-mounted and floor-level cameras surrounding the classroom
+- **Real-world dynamics:** human motion during an actual lecture, not a staged studio capture
+- **Indoor complexity:** furniture, occlusions, and a wide room-scale capture area
+- **Cross-view inconsistency:** suitable for evaluating color correction and appearance-consistency methods
+
+---
+
+## 📄 Citation
+
+<!--
+If you use or refer to this dataset, please cite:
+
+Replace with the published KACE 2026 paper once volume/issue/pages are confirmed.
+
+```bibtex
+@inproceedings{jo2026xrclassroom,
+  author    = {Soo-Been Jo and ... and Eun-Seok Ryu},
+  title     = {XR Classroom: A Multi-View Dataset for a 3D Neural Representation-based XR Education Platform},
+  booktitle = {Proceedings of the Korean Association of Computer Education (KACE) Conference},
+  volume    = {XX},
+  number    = {X},
+  pages     = {XX--XX},
+  year      = {2026},
+  note      = {in Korean}
+}
+```
+-->
+
+> Citation information will be added when the associated publication is available.
+
+---
+
+## 📜 License
+
+Dataset usage terms will be stated with the release package. Until then, please contact the maintainer before using or redistributing any data.
+
+<!--
+Privacy & consent — confirm before publishing images that show people:
+All individuals appearing in the dataset participated with informed consent.
+-->
+
+---
+
+## 🙏 Acknowledgment
+
+<!-- TODO: funding statement (agency, program, grant number) — confirm wording with advisor. -->
+This dataset was produced as part of the project *"Development of XR Educational Platform by using 3D Neural Representation."*
+
+---
+
+## 🔗 Contact & Related Links
+
+- **Contact:** Soo-Been Jo ([josubin@skku.edu](mailto:josubin@skku.edu))
+- **IMCLab, Sungkyunkwan University:** https://imclab.skku.edu/
