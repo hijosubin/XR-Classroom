@@ -35,3 +35,7 @@ Citation information will be added when the associated dataset publication is av
 ## License
 
 Dataset usage terms will be stated with the release package. Until then, please contact the dataset maintainers before redistributing any data.
+
+## Related links
+
+- [Intelligent Multimedia Computing Laboratory, SKKU](https://imclab.skku.edu/)
