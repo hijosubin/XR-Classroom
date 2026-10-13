@@ -131,9 +131,29 @@ All packages are available in the [dataset folder](http://gofile.me/6uap5/0BDK8P
 | Supported training | Static-frame 3DGS and dynamic-sequence 4DGS |
 | Evaluation split | Recommended held-out views (see below) |
 
-| Package | Scenario | Version | # Views | Size | Download |
-|---|---|---|:---:|:---:|:---:|
-| TBA | | | | | Coming soon |
+Each scenario folder contains the packages below. Start with the single-frame package if your connection is slow. Large packages are split into parts so that each file can be downloaded separately.
+
+| Package | Content | Scenario 1 | Scenario 2 |
+|---|---|:---:|:---:|
+| Single frame | One synchronized frame from all 44 views, with camera parameters | Coming soon | Coming soon |
+| Compatible | Full sequence, all views at 1920 × 1080, with camera parameters | Coming soon | Coming soon |
+| Original | Full sequence at native resolution, split by camera type | Coming soon | Coming soon |
+| PLY | Trained 3DGS model (trained on all 44 views, not for NVS evaluation) | Coming soon | Coming soon |
+
+The single frame is one instant of the dynamic sequence, so it can be used directly for static 3DGS training. Each scenario folder also includes `SHA256SUMS.txt` for verifying downloads (`sha256sum -c SHA256SUMS.txt --ignore-missing`).
+
+```
+XR-Classroom/
+├── scenario_1/
+│   ├── XRC_S1_single_frame.zip
+│   ├── XRC_S1_compatible_part01.zip, ...
+│   ├── XRC_S1_original_basler.zip
+│   ├── XRC_S1_original_realsense.zip
+│   ├── XRC_S1_3dgs.ply
+│   └── SHA256SUMS.txt
+└── scenario_2/
+    └── ...
+```
 
 For questions or collaboration, please contact [josubin@skku.edu](mailto:josubin@skku.edu).
 
@@ -159,7 +179,7 @@ The fourth center view (view 8) is excluded from the dataset because of a captur
 
 If you use or refer to this dataset, please cite:
 
-Soo-Been Jo, Yeongil Ryu, Isaac Yang, Reagan Koo, Seung Huk Ahn, Ye-Eun Yeom, Eun-Seok Ryu, "XR Classroom: A Multi-view Dataset for a 3D Neural Representation-Based Educational Platform," *Proceedings of the 58th KACE Summer Conference*, vol. 30, no. 2, Aug. 2026. (in Korean)
+Soo-Been Jo, Yeongil Ryu, Isaac Yang, Reagan Koo, Seung Huk Ahn, Ye-Eun Yeom, Eun-Seok Ryu, "XR Classroom: A Multi-view Dataset for a 3D Neural Representation-Based Educational Platform," *Proceedings of the 58th KACE Summer Conference*, vol. 30, no. 2, Aug. 2026. (in Korean) [[PDF]](https://imclab.skku.edu/MCSL/wp-content/uploads/2026/09/XR-Classroom-3%EC%B0%A8%EC%9B%90-%EB%89%B4%EB%9F%B4-%EB%A6%AC%ED%94%84%EB%A0%88%EC%A0%A0%ED%85%8C%EC%9D%B4%EC%85%98-%EA%B8%B0%EB%B0%98-XR-%EA%B5%90%EC%9C%A1-%ED%94%8C%EB%9E%AB%ED%8F%BC%EC%9D%84-%EC%9C%84%ED%95%9C-%EB%A9%80%ED%8B%B0%EB%B7%B0-%EB%8D%B0%EC%9D%B4%ED%84%B0%EC%85%8B.pdf)
 
 ```bibtex
 @inproceedings{jo2026xrclassroom,
@@ -178,7 +198,7 @@ Soo-Been Jo, Yeongil Ryu, Isaac Yang, Reagan Koo, Seung Huk Ahn, Ye-Eun Yeom, Eu
 
 The capture system and the free-viewpoint rendering pipeline are described in:
 
-Soo-Been Jo, Yeongil Ryu, Isaac Yang, Reagan Koo, Eun-Seok Ryu, "Development of XR Educational Platform by Using 3D Neural Representation," *Proceedings of the 58th KACE Summer Conference*, vol. 30, no. 2, Aug. 2026. (in Korean)
+Soo-Been Jo, Yeongil Ryu, Isaac Yang, Reagan Koo, Eun-Seok Ryu, "Development of XR Educational Platform by Using 3D Neural Representation," *Proceedings of the 58th KACE Summer Conference*, vol. 30, no. 2, Aug. 2026. (in Korean) [[PDF]](https://imclab.skku.edu/MCSL/wp-content/uploads/2026/09/3%EC%B0%A8%EC%9B%90-%EB%89%B4%EB%9F%B4-%EB%A6%AC%ED%94%84%EB%A0%88%EC%A0%A0%ED%85%8C%EC%9D%B4%EC%85%98-%EA%B8%B0%EC%88%A0%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EC%B0%A8%EC%84%B8%EB%8C%80-XR-%EA%B5%90%EC%9C%A1-%ED%94%8C%EB%9E%AB%ED%8F%BC.pdf)
 
 ---
 
