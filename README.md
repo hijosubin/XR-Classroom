@@ -4,9 +4,7 @@
 
 ### A Real-World Dynamic Multi-View Classroom Dataset Captured with Heterogeneous RGB Cameras for 3D/4D Gaussian Splatting
 
-<!-- TODO: add co-authors in paper order between the two names, e.g. · Young-Il Ryu<sup>1</sup> · Isaac Yang<sup>1</sup> · Rae-Geon Koo<sup>1</sup> -->
-
-[**Soo-Been Jo**](mailto:josubin@skku.edu)<sup>1</sup> · [**Eun-Seok Ryu**](https://imclab.skku.edu/)<sup>1</sup>
+[**Soo-Been Jo**](mailto:josubin@skku.edu)<sup>1</sup> · Yeongil Ryu<sup>1</sup> · Isaac Yang<sup>1</sup> · Reagan Koo<sup>1</sup> · Seung Huk Ahn<sup>1</sup> · Ye-Eun Yeom<sup>1</sup> · [**Eun-Seok Ryu**](https://imclab.skku.edu/)<sup>1</sup>
 
 <sup>1</sup>Intelligent Multimedia Computing Laboratory (IMCLab), Department of Immersive Media Engineering, Sungkyunkwan University
 
@@ -31,6 +29,7 @@ Recommended: a short looping GIF/MP4 of a 4DGS free-viewpoint render (camera orb
 ## 📢 News
 
 - **[2026.10]** Dataset documentation released. Data packages will be added in upcoming releases.
+- **[2026.08]** XR Classroom was presented at the 2026 KACE Summer Conference (Korean Association of Computer Education).
 
 ---
 
@@ -137,26 +136,21 @@ XR-Classroom/
 
 ## 📄 Citation
 
-<!--
 If you use or refer to this dataset, please cite:
 
-Replace with the published KACE 2026 paper once volume/issue/pages are confirmed.
+Soo-Been Jo, Yeongil Ryu, Isaac Yang, Reagan Koo, Seung Huk Ahn, Ye-Eun Yeom, Eun-Seok Ryu, "XR Classroom: A Multi-View Dataset for a 3D Neural Representation-based XR Education Platform," *2026 KACE Summer Conference (Korean Association of Computer Education)*, Aug. 2026. (in Korean)
 
 ```bibtex
 @inproceedings{jo2026xrclassroom,
-  author    = {Soo-Been Jo and ... and Eun-Seok Ryu},
-  title     = {XR Classroom: A Multi-View Dataset for a 3D Neural Representation-based XR Education Platform},
-  booktitle = {Proceedings of the Korean Association of Computer Education (KACE) Conference},
-  volume    = {XX},
-  number    = {X},
-  pages     = {XX--XX},
+  author    = {Soo-Been Jo and Yeongil Ryu and Isaac Yang and Reagan Koo and Seung Huk Ahn and Ye-Eun Yeom and Eun-Seok Ryu},
+  title     = {{XR Classroom}: A Multi-View Dataset for a {3D} Neural Representation-based {XR} Education Platform},
+  booktitle = {Proceedings of the 2026 Summer Conference of the Korean Association of Computer Education (KACE)},
   year      = {2026},
   note      = {in Korean}
 }
 ```
--->
 
-> Citation information will be added when the associated publication is available.
+<!-- TODO: add volume/number/pages once the proceedings are published (KoreaScience / DBpia). -->
 
 ---
 
@@ -173,8 +167,10 @@ All individuals appearing in the dataset participated with informed consent.
 
 ## 🙏 Acknowledgment
 
-<!-- TODO: funding statement (agency, program, grant number) — confirm wording with advisor. -->
 This dataset was produced as part of the project *"Development of XR Educational Platform by using 3D Neural Representation."*
+<!-- TODO: funding statement (agency, program, grant number) — confirm wording with advisor. -->
+
+We thank our IMCLab members Yeong-Gyu Kim, Priyanka Muthukumaran, Uijoon Jeong, Yuchan Cho, Yeong Hun Jeong, and Inseo Jang for participating in the recorded lecture scenarios and for their help with the capture setup.
 
 ---
 
