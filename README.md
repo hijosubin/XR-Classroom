@@ -11,7 +11,7 @@ Soo-Been Jo<sup>1</sup> · Yeongil Ryu<sup>1</sup> · Isaac Yang<sup>1</sup> · 
 ![Status](https://img.shields.io/badge/status-documentation%20preview-orange)
 ![Views](https://img.shields.io/badge/views-44-blue)
 ![Modality](https://img.shields.io/badge/modality-RGB-green)
-![License](https://img.shields.io/badge/license-TBA-lightgrey)
+![License](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey)
 
 </div>
 
@@ -120,8 +120,6 @@ Each sequence is aligned to the synchronized interval shared by all views. The s
 
 ## 📦 Dataset Availability
 
-The dataset is released through the [IMCLab website](https://imclab.skku.edu/software). Download links will be added here when each package is ready.
-
 | Item | Description |
 |---|---|
 | Multi-view video | RGB videos from 44 views (original / compatible versions, no audio) |
@@ -133,7 +131,7 @@ The dataset is released through the [IMCLab website](https://imclab.skku.edu/sof
 |---|---|---|:---:|:---:|:---:|
 | TBA | | | | | Coming soon |
 
-For early access or collaboration, please contact [josubin@skku.edu](mailto:josubin@skku.edu).
+For questions or collaboration, please contact [josubin@skku.edu](mailto:josubin@skku.edu).
 
 ### Original and Compatible Versions
 
@@ -182,7 +180,11 @@ Soo-Been Jo, Yeongil Ryu, Isaac Yang, Reagan Koo, Eun-Seok Ryu, "Development of 
 
 ## 📜 License
 
-The dataset was captured with the consent of all participants. Dataset usage terms will be stated with the release package. Until then, please contact the maintainer before using or redistributing any data.
+This dataset is released under the [Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/).
+
+- You may use, share, and adapt the dataset for **non-commercial research and educational purposes** without prior permission.
+- Please **cite** the paper listed above when you use the dataset.
+- The dataset was captured with the consent of all participants. Do not use it to identify, track, or profile the individuals who appear in it.
 
 ---
 
