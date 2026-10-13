@@ -13,6 +13,8 @@ Soo-Been Jo<sup>1</sup> · Yeongil Ryu<sup>1</sup> · Isaac Yang<sup>1</sup> · 
 ![Modality](https://img.shields.io/badge/modality-RGB-green)
 ![License](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey)
 
+**Version:** October 2026 · **Source:** [Download Dataset](http://gofile.me/6uap5/0BDK8PYXa)
+
 </div>
 
 <!--
@@ -120,6 +122,8 @@ Each sequence is aligned to the synchronized interval shared by all views. The s
 
 ## 📦 Dataset Availability
 
+All packages are available in the [dataset folder](http://gofile.me/6uap5/0BDK8PYXa). Individual download links are listed below.
+
 | Item | Description |
 |---|---|
 | Multi-view video | RGB videos from 44 views (original / compatible versions, no audio) |
@@ -199,5 +203,5 @@ We thank our IMCLab members Yeong-Gyu Kim, Priyanka Muthukumaran, Uijoon Jeong, 
 ## 🔗 Contact & Related Links
 
 - **Contact:** Soo-Been Jo ([josubin@skku.edu](mailto:josubin@skku.edu))
-- **IMCLab, Sungkyunkwan University:** Https://imclab.skku.edu/
+- **IMCLab, Sungkyunkwan University:** https://imclab.skku.edu/
 - **Other IMCLab datasets:** VRrooms (IPIU 2025), [Library](https://github.com/reagan99/Library) (IEEE VR 2026 Workshops)
