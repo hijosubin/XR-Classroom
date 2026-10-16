@@ -112,6 +112,9 @@ A total of 45 cameras were installed: 20 Basler and 25 RealSense. The dataset co
 | Scenario 1 | The instructor explains using a physical teaching aid (a robot), and learners watch and study it. | Coming soon |
 | Scenario 2 | During the lecture, some learners engage in off-task activities (e.g., reading comics, using a smartphone) that are hard to notice from the instructor's frontal viewpoint. | 300 (10 s) |
 
+<p align="center"><img src="images/scenarios.jpg" width="100%" alt="Scenario 1 and Scenario 2"></p>
+<p align="center"><em>The same real captured view (cam06, Basler view 06) from each scenario, taken from frame 400 of the raw capture. Orange boxes mark off-task activities in Scenario 2 that are hard to notice from the instructor's viewpoint. Brightness adjusted and annotations added for visualization only.</em></p>
+
 Each scenario was captured for about 20 seconds. The released sequence is the interval that is synchronized across all 44 views (10 seconds, 300 frames at 30 fps, for Scenario 2). The scenes include diverse body motions, such as raising a hand to ask a question, taking notes, observing a teaching aid, talking to a learner sitting behind, and lowering the head. They also contain:
 
 - **Mutual occlusions** between the instructor and multiple learners
