@@ -8,7 +8,7 @@ Soo-Been Jo<sup>1</sup> · Yeongil Ryu<sup>1</sup> · Isaac Yang<sup>1</sup> · 
 
 <sup>1</sup>Intelligent Multimedia Computing Laboratory (IMCLab), Department of Immersive Media Engineering, Sungkyunkwan University
 
-![Status](https://img.shields.io/badge/status-data%20upload%20in%20progress-yellow)
+![Status](https://img.shields.io/badge/status-Scenario%202%20released-brightgreen)
 ![Views](https://img.shields.io/badge/views-44-blue)
 ![Modality](https://img.shields.io/badge/modality-RGB-green)
 ![License](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey)
@@ -30,7 +30,8 @@ Recommended: a short looping GIF/MP4 of a 4DGS free-viewpoint render (camera orb
 
 ## 📢 News
 
-- **[2026.10]** Dataset documentation released. Data packages will be added in upcoming releases.
+- **[2026.10]** Scenario 2 data packages released (single frame, compatible, original). Scenario 1 will follow.
+- **[2026.10]** Dataset documentation released.
 - **[2026.08]** XR Classroom was presented at the 2026 KACE Summer Conference (Korean Association of Computer Education).
 
 ---
@@ -54,7 +55,7 @@ Recommended: a short looping GIF/MP4 of a 4DGS free-viewpoint render (camera orb
 ### Camera Layout
 <p align="center"><img src="images/camera_layout_top.png" width="75%" alt="Camera layout (oblique view)"></p>
 <p align="center"><img src="images/camera_layout_side.png" width="95%" alt="Camera layout (side view)"></p>
-<p align="center"><em>Estimated camera poses of all 44 views. Top: oblique view of the cameras surrounding the classroom. Bottom: side view showing the ceiling-mounted and eye-level camera rows.</em></p>
+<p align="center"><em>Estimated camera poses of all 44 views (VGGT). Top: oblique view of the cameras surrounding the classroom. Bottom: side view showing the ceiling-mounted and eye-level camera rows.</em></p>
 
 ### Capture Environment
 <p align="center"><img src="images/capture_environment.png" width="90%" alt="Capture environment"></p>
@@ -96,7 +97,7 @@ A total of 45 cameras were installed: 20 Basler and 25 RealSense. The dataset co
 | Camera servers | 4 | 5 |
 | Resolution (original version) | 1952 × 1088 | 1920 × 1080 |
 | Resolution (compatible version) | 1920 × 1080 | 1920 × 1080 |
-| Frame rate | Up to 30 fps | Up to 30 fps |
+| Frame rate (as captured) | ~19.8 fps (50.6 ms interval, from camera timestamps) | 30 fps |
 
 - **Modality:** RGB only. Depth streams of the RealSense cameras and audio are not included.
 - **Camera arrangement:** All cameras face the center of the lecture space, and their positions and orientations are fixed during capture.
@@ -123,14 +124,25 @@ Each scenario was captured for about 20 seconds. The released sequence is the in
 
 ---
 
+## ⏱️ Temporal Synchronization
+
+All released frames are on a common **30 fps timeline** (300 frames, ~10 s for Scenario 2).
+
+- **RealSense (30 fps):** each released frame is one captured frame.
+- **Basler (~19.8 fps):** each released frame is the captured frame nearest in time, so about one in three Basler frames in the released sequence repeats the previous frame. These repeats reflect the native capture rate, not missing data.
+- **Validation:** motion-energy cross-correlation between the raw Basler and raw RealSense sequences gives r = 0.98 with a residual offset of about 0.06 s (within one Basler frame interval).
+- **Frame mapping:** `XRC_S2_frame_map.csv` in the scenario folder lists, for every camera and released frame, the index of the source frame in the raw recording.
+
+---
+
 ## 📦 Dataset Availability
 
-All packages are available in the [dataset folder](http://gofile.me/6uap5/0BDK8PYXa). Individual download links are listed below.
+All packages are available in the [dataset folder](http://gofile.me/6uap5/0BDK8PYXa). The files of each package are listed below.
 
 | Item | Description |
 |---|---|
 | Multi-view video | RGB videos from 44 views (original / compatible versions, no audio) |
-| Camera parameters | Per-view intrinsic and extrinsic parameters estimated with COLMAP / VGGT |
+| Camera parameters | Per-view intrinsic and extrinsic parameters estimated with COLMAP (`sparse/0`), plus `poses_bounds.npy` for the compatible version |
 | Supported training | Static-frame 3DGS and dynamic-sequence 4DGS |
 | Evaluation split | Recommended held-out views (see below) |
 
@@ -138,12 +150,12 @@ Each scenario folder contains the packages below. Start with the single-frame pa
 
 | Package | Content | Scenario 1 | Scenario 2 |
 |---|---|:---:|:---:|
-| Single frame | One synchronized frame from all 44 views, with camera parameters | Coming soon | Coming soon |
-| Compatible | Full sequence, all views at 1920 × 1080, with camera parameters | Coming soon | Coming soon |
-| Original | Full sequence at native resolution, split by camera type | Coming soon | Coming soon |
+| Single frame | One synchronized frame from all 44 views, with camera parameters | Coming soon | `XRC_S2_single_frame.zip` (0.1 GB) |
+| Compatible | Full sequence, all views at 1920 × 1080, with camera parameters | Coming soon | `XRC_S2_compatible_part01–04.zip` (35 GB) |
+| Original | Full sequence at native resolution, split by camera type | Coming soon | `XRC_S2_original_basler.zip`, `XRC_S2_original_realsense.zip` (38 GB) |
 | PLY | Trained 3DGS model (trained on all 44 views, not for NVS evaluation) | Coming soon | Coming soon |
 
-The single frame is one instant of the dynamic sequence, so it can be used directly for static 3DGS training. Each scenario folder also includes `SHA256SUMS.txt` for verifying downloads (`sha256sum -c SHA256SUMS.txt --ignore-missing`).
+The single frame is one instant of the dynamic sequence (released frame 0), so it can be used directly for static 3DGS training. Each zip extracts into a package folder (e.g., `XRC_S2_compatible/`), and every zip of a package contains the same camera parameter files (`sparse/0`, `cameras.csv`), so a single part is usable on its own and all parts can be extracted into the same location (`unzip -o`). Each scenario folder also includes `SHA256SUMS.txt` for verifying downloads (`sha256sum -c SHA256SUMS.txt --ignore-missing`).
 
 ```
 XR-Classroom/
@@ -153,6 +165,7 @@ XR-Classroom/
 │   ├── XRC_S1_original_basler.zip
 │   ├── XRC_S1_original_realsense.zip
 │   ├── XRC_S1_3dgs.ply
+│   ├── XRC_S1_frame_map.csv
 │   └── SHA256SUMS.txt
 └── scenario_2/
     └── ...
@@ -162,8 +175,9 @@ For questions or collaboration, please contact [josubin@skku.edu](mailto:josubin
 
 ### Original and Compatible Versions
 
-- **Original version:** The core of the dataset. It keeps the differences in resolution and camera parameters between camera types.
-- **Compatible version:** All views are unified to 1920 × 1080 for existing dynamic-scene pipelines that assume the same input resolution. The Basler 1952 × 1088 frames are center-cropped by 16 pixels on the left and right and 4 pixels on the top and bottom. Cropping is applied **before** camera parameter estimation, so the provided parameters refer to the compatible version.
+- **Original version:** The core of the dataset. It keeps the native resolution of each camera type (Basler 1952 × 1088, RealSense 1920 × 1080), and frames are **not undistorted**. Camera parameters are provided as a COLMAP model (`sparse/0`, `SIMPLE_RADIAL`); for Basler views the principal point is shifted by (+16, +4) px to native-resolution coordinates.
+- **Compatible version:** All views are unified to 1920 × 1080 for existing dynamic-scene pipelines that assume the same input resolution. The Basler 1952 × 1088 frames are center-cropped by 16 pixels on the left and right and 4 pixels on the top and bottom, and all views are then **undistorted to a `PINHOLE` model** (principal point at the image center, per-camera focal length; at most 2.1% zoom, no black borders). Camera parameters are provided as a COLMAP model (`sparse/0`) and as `poses_bounds.npy` (N3DV/LLFF format, one row per camera from `cam01` to `cam44`, with per-camera focal length).
+- **Color:** All versions keep the **original captured colors**. No color correction is applied, so the color differences between camera types are preserved for research on heterogeneous-camera pipelines.
 
 ### Recommended Evaluation Split
 
@@ -174,6 +188,8 @@ For quantitative evaluation of novel view synthesis, the center view of each Bas
 
 The fourth center view (Basler view 08) is excluded from the dataset because of a capture error. Under this protocol, the RGB frames of the held-out views must not be used for initial point generation, color correction, or model optimization; use them only to evaluate novel view synthesis after training.
 
+Note: the provided COLMAP 3D points (`points3D.txt`) were triangulated from all 44 views, including the held-out views. Camera poses of the held-out views are required for evaluation and are not affected. For a strict protocol, re-triangulate the points from the 41 training views with the provided poses fixed (e.g., COLMAP `point_triangulator`). A training-view-only point cloud will be added in a future release.
+
 ### Camera Indexing
 
 Views are stored as `cam01` to `cam44` in the Neural 3D Video (N3DV) layout, so the data can be loaded directly by N3DV-compatible 3D/4D Gaussian Splatting code. Basler and RealSense cameras were originally numbered separately; the mapping is provided in `cameras.csv` in each package.
@@ -182,6 +198,8 @@ Views are stored as `cam01` to `cam44` in the Neural 3D Video (N3DV) layout, so 
 |---|---|---|
 | `cam01` – `cam19` | Basler (ceiling) | Basler views 01–07, 09–20 (view 08 excluded) |
 | `cam20` – `cam44` | RealSense (eye level) | RealSense views 01–25 |
+
+The cameras are static, so each COLMAP model contains one image entry per camera (named `camNN.png`) that applies to every frame `camNN/0000.png` – `camNN/0299.png`. In the single-frame package the images are stored as `images/camNN.png`, so the folder can be used directly with the original 3DGS code (`train.py -s <folder>`).
 
 ---
 
