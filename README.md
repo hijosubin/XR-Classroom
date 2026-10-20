@@ -8,7 +8,7 @@ Soo-Been Jo<sup>1</sup> · Yeongil Ryu<sup>1</sup> · Isaac Yang<sup>1</sup> · 
 
 <sup>1</sup>Intelligent Multimedia Computing Laboratory (IMCLab), Department of Immersive Media Engineering, Sungkyunkwan University
 
-![Status](https://img.shields.io/badge/status-Scenario%202%20released-brightgreen)
+![Status](https://img.shields.io/badge/status-Scenarios%201%20%26%202%20released-brightgreen)
 ![Views](https://img.shields.io/badge/views-44-blue)
 ![Modality](https://img.shields.io/badge/modality-RGB-green)
 ![License](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey)
@@ -30,8 +30,7 @@ Recommended: a short looping GIF/MP4 of a 4DGS free-viewpoint render (camera orb
 
 ## 📢 News
 
-- **[2026.10]** Scenario 2 data packages released (single frame, compatible, original). Scenario 1 will follow.
-- **[2026.10]** Dataset documentation released.
+- **[2026.10]** Dataset documentation and data packages for Scenarios 1 and 2 (single frame, compatible, original) released. Trained 3DGS models are coming soon.
 - **[2026.08]** XR Classroom was presented at the 2026 KACE Summer Conference (Korean Association of Computer Education).
 
 ---
@@ -110,13 +109,13 @@ A total of 45 cameras were installed: 20 Basler and 25 RealSense. The dataset co
 
 | Scenario | Description | Released frames |
 |---|---|---|
-| Scenario 1 | The instructor explains using a physical teaching aid (a robot), and learners watch and study it. | Coming soon |
+| Scenario 1 | The instructor explains using a physical teaching aid (a robot), and learners watch and study it. | 300 (10 s) |
 | Scenario 2 | During the lecture, some learners engage in off-task activities (e.g., reading comics, using a smartphone) that are hard to notice from the instructor's frontal viewpoint. | 300 (10 s) |
 
 <p align="center"><img src="images/scenarios.jpg" width="100%" alt="Scenario 1 and Scenario 2"></p>
 <p align="center"><em>The same real captured view (cam06, Basler view 06) from each scenario, taken from frame 400 of the raw capture. Orange boxes mark off-task activities in Scenario 2 that are hard to notice from the instructor's viewpoint. Brightness adjusted and annotations added for visualization only.</em></p>
 
-Each scenario was captured for about 20 seconds. The released sequence is the interval that is synchronized across all 44 views (10 seconds, 300 frames at 30 fps, for Scenario 2). The scenes include diverse body motions, such as raising a hand to ask a question, taking notes, observing a teaching aid, talking to a learner sitting behind, and lowering the head. They also contain:
+Each scenario was captured for about 20 seconds. The released sequence is the interval that is synchronized across all 44 views (10 seconds, 300 frames at 30 fps, for each scenario). The scenes include diverse body motions, such as raising a hand to ask a question, taking notes, observing a teaching aid, talking to a learner sitting behind, and lowering the head. They also contain:
 
 - **Mutual occlusions** between the instructor and multiple learners
 - **Two viewpoint heights and fields of view** from ceiling-mounted and eye-level cameras
@@ -126,12 +125,12 @@ Each scenario was captured for about 20 seconds. The released sequence is the in
 
 ## ⏱️ Temporal Synchronization
 
-All released frames are on a common **30 fps timeline** (300 frames, ~10 s for Scenario 2).
+All released frames are on a common **30 fps timeline** (300 frames, ~10 s per scenario).
 
 - **RealSense (30 fps):** each released frame is one captured frame.
 - **Basler (~19.8 fps):** each released frame is the captured frame nearest in time, so about one in three Basler frames in the released sequence repeats the previous frame. These repeats reflect the native capture rate, not missing data.
 - **Validation:** motion-energy cross-correlation between the raw Basler and raw RealSense sequences gives r = 0.98 with a residual offset of about 0.06 s (within one Basler frame interval).
-- **Frame mapping:** `XRC_S2_frame_map.csv` in the scenario folder lists, for every camera and released frame, the index of the source frame in the raw recording.
+- **Frame mapping:** `XRC_S1_frame_map.csv` and `XRC_S2_frame_map.csv` in the scenario folders list, for every camera and released frame, the index of the source frame in the raw recording.
 
 ---
 
@@ -146,14 +145,37 @@ All packages are available in the [dataset folder](http://gofile.me/6uap5/0BDK8P
 | Supported training | Static-frame 3DGS and dynamic-sequence 4DGS |
 | Evaluation split | Recommended held-out views (see below) |
 
-Each scenario folder contains the packages below. Start with the single-frame package if your connection is slow. Large packages are split into parts so that each file can be downloaded separately.
+Each scenario folder contains the packages below. Start with the single-frame package if your connection is slow. Large packages are split into parts so that each file can be downloaded separately. Compatible parts 01–04 contain `cam01`–`cam11`, `cam12`–`cam22`, `cam23`–`cam33`, and `cam34`–`cam44`; the original package is split into Basler (`cam01`–`cam19`) and RealSense (`cam20`–`cam44`). File sizes are shown as displayed by the download server (1 GB = 1024³ bytes, 1 MB = 1024² bytes).
 
-| Package | Content | Scenario 1 | Scenario 2 |
-|---|---|:---:|:---:|
-| Single frame | One synchronized frame from all 44 views, with camera parameters | Coming soon | `XRC_S2_single_frame.zip` (0.1 GB) |
-| Compatible | Full sequence, all views at 1920 × 1080, with camera parameters | Coming soon | `XRC_S2_compatible_part01–04.zip` (35 GB) |
-| Original | Full sequence at native resolution, split by camera type | Coming soon | `XRC_S2_original_basler.zip`, `XRC_S2_original_realsense.zip` (38 GB) |
-| PLY | Trained 3DGS model (trained on all 44 views, not for NVS evaluation) | Coming soon | Coming soon |
+#### Scenario 1
+
+| Package | Description | Size | Download |
+|---|---|---:|:---:|
+| Single frame | One synchronized frame (frame 0) from all 44 views, with camera parameters | 128.1 MB | [Download](http://gofile.me/6uap5/aR78GUPFt) |
+| Compatible part 01 | `cam01`–`cam11`, full sequence, 1920 × 1080, undistorted, with camera parameters | 9.50 GB | [Download](http://gofile.me/6uap5/eICHAuJRy) |
+| Compatible part 02 | `cam12`–`cam22`, full sequence, 1920 × 1080, undistorted, with camera parameters | 9.29 GB | [Download](http://gofile.me/6uap5/B2XfuX9Sd) |
+| Compatible part 03 | `cam23`–`cam33`, full sequence, 1920 × 1080, undistorted, with camera parameters | 7.96 GB | [Download](http://gofile.me/6uap5/yfFFG5CXP) |
+| Compatible part 04 | `cam34`–`cam44`, full sequence, 1920 × 1080, undistorted, with camera parameters | 7.99 GB | [Download](http://gofile.me/6uap5/iGuJPpNB5) |
+| Original (Basler) | `cam01`–`cam19`, full sequence, native 1952 × 1088, with camera parameters | 18.04 GB | [Download](http://gofile.me/6uap5/eRbKKTBWM) |
+| Original (RealSense) | `cam20`–`cam44`, full sequence, native 1920 × 1080, with camera parameters | 17.38 GB | [Download](http://gofile.me/6uap5/5muulRTVa) |
+| PLY | Trained 3DGS model (trained on all 44 views, not for NVS evaluation) | – | Coming soon |
+
+The frame map (`XRC_S1_frame_map.csv`) and checksums (`SHA256SUMS.txt`) are in the [Scenario 1 folder](http://gofile.me/6uap5/5FZ8G19FP).
+
+#### Scenario 2
+
+| Package | Description | Size | Download |
+|---|---|---:|:---:|
+| Single frame | One synchronized frame (frame 0) from all 44 views, with camera parameters | 128.4 MB | [Download](http://gofile.me/6uap5/0lX7K9PVM) |
+| Compatible part 01 | `cam01`–`cam11`, full sequence, 1920 × 1080, undistorted, with camera parameters | 9.49 GB | [Download](http://gofile.me/6uap5/qAcBQ2SXR) |
+| Compatible part 02 | `cam12`–`cam22`, full sequence, 1920 × 1080, undistorted, with camera parameters | 9.28 GB | [Download](http://gofile.me/6uap5/9kx1S8mKN) |
+| Compatible part 03 | `cam23`–`cam33`, full sequence, 1920 × 1080, undistorted, with camera parameters | 7.98 GB | [Download](http://gofile.me/6uap5/welqyMWdb) |
+| Compatible part 04 | `cam34`–`cam44`, full sequence, 1920 × 1080, undistorted, with camera parameters | 7.99 GB | [Download](http://gofile.me/6uap5/ePYxbqtDx) |
+| Original (Basler) | `cam01`–`cam19`, full sequence, native 1952 × 1088, with camera parameters | 18.04 GB | [Download](http://gofile.me/6uap5/zs0m36Uzh) |
+| Original (RealSense) | `cam20`–`cam44`, full sequence, native 1920 × 1080, with camera parameters | 18.66 GB | [Download](http://gofile.me/6uap5/Xo59QmmvW) |
+| PLY | Trained 3DGS model (trained on all 44 views, not for NVS evaluation) | – | Coming soon |
+
+The frame map (`XRC_S2_frame_map.csv`) and checksums (`SHA256SUMS.txt`) are in the [Scenario 2 folder](http://gofile.me/6uap5/0MBmuH3mk).
 
 The single frame is one instant of the dynamic sequence (released frame 0), so it can be used directly for static 3DGS training. Each zip extracts into a package folder (e.g., `XRC_S2_compatible/`), and every zip of a package contains the same camera parameter files (`sparse/0`, `cameras.csv`), so a single part is usable on its own and all parts can be extracted into the same location (`unzip -o`). Each scenario folder also includes `SHA256SUMS.txt` for verifying downloads (`sha256sum -c SHA256SUMS.txt --ignore-missing`).
 
@@ -164,7 +186,7 @@ XR-Classroom/
 │   ├── XRC_S1_compatible_part01.zip, ...
 │   ├── XRC_S1_original_basler.zip
 │   ├── XRC_S1_original_realsense.zip
-│   ├── XRC_S1_3dgs.ply
+│   ├── XRC_S1_3dgs.ply              (coming soon)
 │   ├── XRC_S1_frame_map.csv
 │   └── SHA256SUMS.txt
 └── scenario_2/
@@ -199,7 +221,7 @@ Views are stored as `cam01` to `cam44` in the Neural 3D Video (N3DV) layout, so 
 | `cam01` – `cam19` | Basler (ceiling) | Basler views 01–07, 09–20 (view 08 excluded) |
 | `cam20` – `cam44` | RealSense (eye level) | RealSense views 01–25 |
 
-The cameras are static, so each COLMAP model contains one image entry per camera (named `camNN.png`) that applies to every frame `camNN/0000.png` – `camNN/0299.png`. In the single-frame package the images are stored as `images/camNN.png`, so the folder can be used directly with the original 3DGS code (`train.py -s <folder>`).
+The cameras were not moved between the two scenarios (frame-to-frame image registration between Scenario 1 and Scenario 2 shows a maximum shift of 0.09 px across all 44 views), so both scenarios share the same camera parameters. The cameras are static, so each COLMAP model contains one image entry per camera (named `camNN.png`) that applies to every frame `camNN/0000.png` – `camNN/0299.png`. In the single-frame package the images are stored as `images/camNN.png`, so the folder can be used directly with the original 3DGS code (`train.py -s <folder>`).
 
 ---
 
