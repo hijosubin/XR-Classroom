@@ -63,8 +63,8 @@ Recommended: a short looping GIF/MP4 of a 4DGS free-viewpoint render (camera orb
 <p align="center"><em>Reconstructed classroom point cloud with estimated camera poses.</em></p>
 
 ### Multi-View Samples
-<p align="center"><img src="images/multiview_grid.png" width="95%" alt="Multi-view samples"></p>
-<p align="center"><em>The same synchronized frame of Scenario 2 from all 44 views. The first 19 views (row-major order) are ceiling-mounted Basler cameras; the remaining 25 are eye-level RealSense cameras.</em></p>
+<p align="center"><img src="images/multiview_atlas.jpg" width="100%" alt="All 44 views labeled by folder and camera type"></p>
+<p align="center"><em>One synchronized frame of Scenario 2 from all 44 views. Each label gives the data folder and the camera type and height: ceiling-mounted Basler cameras (<code>cam01</code>–<code>cam19</code>) and eye-level RealSense cameras (<code>cam20</code>–<code>cam44</code>). The two types differ in viewpoint height, field of view, and color response. Device IDs are listed under Camera Indexing.</em></p>
 
 ### Reconstruction
 <p align="center"><img src="images/render.png" width="80%" alt="Render result"></p>
