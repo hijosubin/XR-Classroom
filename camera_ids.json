@@ -1,0 +1,350 @@
+{
+  "note": "Data folders number the 44 recorded cameras consecutively. Device IDs (used in the paper and on the physical rig) run cam01-cam45; Basler device cam08 recorded no data and has no folder. folder N = device N for N <= 7; device = folder + 1 for N >= 8. Within each family, device IDs also map to the per-family view numbers used in cameras.csv: Basler view = device ID (01-20, view 08 missing); RealSense view = device ID - 20 (01-25).",
+  "missing_device": "cam08 (Basler)",
+  "test_set_A": {
+    "folders": [
+      "cam01",
+      "cam09",
+      "cam17",
+      "cam25",
+      "cam33",
+      "cam41"
+    ],
+    "device_ids": [
+      "cam01",
+      "cam10",
+      "cam18",
+      "cam26",
+      "cam34",
+      "cam42"
+    ]
+  },
+  "test_set_B": {
+    "folders": [
+      "cam03",
+      "cam12",
+      "cam17",
+      "cam22",
+      "cam37",
+      "cam43"
+    ],
+    "device_ids": [
+      "cam03",
+      "cam13",
+      "cam18",
+      "cam23",
+      "cam38",
+      "cam44"
+    ]
+  },
+  "cameras": [
+    {
+      "folder": "cam01",
+      "device_id": "cam01",
+      "family": "Basler",
+      "height": "ceiling",
+      "family_view": "Basler view 01"
+    },
+    {
+      "folder": "cam02",
+      "device_id": "cam02",
+      "family": "Basler",
+      "height": "ceiling",
+      "family_view": "Basler view 02"
+    },
+    {
+      "folder": "cam03",
+      "device_id": "cam03",
+      "family": "Basler",
+      "height": "ceiling",
+      "family_view": "Basler view 03"
+    },
+    {
+      "folder": "cam04",
+      "device_id": "cam04",
+      "family": "Basler",
+      "height": "ceiling",
+      "family_view": "Basler view 04"
+    },
+    {
+      "folder": "cam05",
+      "device_id": "cam05",
+      "family": "Basler",
+      "height": "ceiling",
+      "family_view": "Basler view 05"
+    },
+    {
+      "folder": "cam06",
+      "device_id": "cam06",
+      "family": "Basler",
+      "height": "ceiling",
+      "family_view": "Basler view 06"
+    },
+    {
+      "folder": "cam07",
+      "device_id": "cam07",
+      "family": "Basler",
+      "height": "ceiling",
+      "family_view": "Basler view 07"
+    },
+    {
+      "folder": "cam08",
+      "device_id": "cam09",
+      "family": "Basler",
+      "height": "ceiling",
+      "family_view": "Basler view 09"
+    },
+    {
+      "folder": "cam09",
+      "device_id": "cam10",
+      "family": "Basler",
+      "height": "ceiling",
+      "family_view": "Basler view 10"
+    },
+    {
+      "folder": "cam10",
+      "device_id": "cam11",
+      "family": "Basler",
+      "height": "ceiling",
+      "family_view": "Basler view 11"
+    },
+    {
+      "folder": "cam11",
+      "device_id": "cam12",
+      "family": "Basler",
+      "height": "ceiling",
+      "family_view": "Basler view 12"
+    },
+    {
+      "folder": "cam12",
+      "device_id": "cam13",
+      "family": "Basler",
+      "height": "ceiling",
+      "family_view": "Basler view 13"
+    },
+    {
+      "folder": "cam13",
+      "device_id": "cam14",
+      "family": "Basler",
+      "height": "ceiling",
+      "family_view": "Basler view 14"
+    },
+    {
+      "folder": "cam14",
+      "device_id": "cam15",
+      "family": "Basler",
+      "height": "ceiling",
+      "family_view": "Basler view 15"
+    },
+    {
+      "folder": "cam15",
+      "device_id": "cam16",
+      "family": "Basler",
+      "height": "ceiling",
+      "family_view": "Basler view 16"
+    },
+    {
+      "folder": "cam16",
+      "device_id": "cam17",
+      "family": "Basler",
+      "height": "ceiling",
+      "family_view": "Basler view 17"
+    },
+    {
+      "folder": "cam17",
+      "device_id": "cam18",
+      "family": "Basler",
+      "height": "ceiling",
+      "family_view": "Basler view 18"
+    },
+    {
+      "folder": "cam18",
+      "device_id": "cam19",
+      "family": "Basler",
+      "height": "ceiling",
+      "family_view": "Basler view 19"
+    },
+    {
+      "folder": "cam19",
+      "device_id": "cam20",
+      "family": "Basler",
+      "height": "ceiling",
+      "family_view": "Basler view 20"
+    },
+    {
+      "folder": "cam20",
+      "device_id": "cam21",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 01"
+    },
+    {
+      "folder": "cam21",
+      "device_id": "cam22",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 02"
+    },
+    {
+      "folder": "cam22",
+      "device_id": "cam23",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 03"
+    },
+    {
+      "folder": "cam23",
+      "device_id": "cam24",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 04"
+    },
+    {
+      "folder": "cam24",
+      "device_id": "cam25",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 05"
+    },
+    {
+      "folder": "cam25",
+      "device_id": "cam26",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 06"
+    },
+    {
+      "folder": "cam26",
+      "device_id": "cam27",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 07"
+    },
+    {
+      "folder": "cam27",
+      "device_id": "cam28",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 08"
+    },
+    {
+      "folder": "cam28",
+      "device_id": "cam29",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 09"
+    },
+    {
+      "folder": "cam29",
+      "device_id": "cam30",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 10"
+    },
+    {
+      "folder": "cam30",
+      "device_id": "cam31",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 11"
+    },
+    {
+      "folder": "cam31",
+      "device_id": "cam32",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 12"
+    },
+    {
+      "folder": "cam32",
+      "device_id": "cam33",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 13"
+    },
+    {
+      "folder": "cam33",
+      "device_id": "cam34",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 14"
+    },
+    {
+      "folder": "cam34",
+      "device_id": "cam35",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 15"
+    },
+    {
+      "folder": "cam35",
+      "device_id": "cam36",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 16"
+    },
+    {
+      "folder": "cam36",
+      "device_id": "cam37",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 17"
+    },
+    {
+      "folder": "cam37",
+      "device_id": "cam38",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 18"
+    },
+    {
+      "folder": "cam38",
+      "device_id": "cam39",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 19"
+    },
+    {
+      "folder": "cam39",
+      "device_id": "cam40",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 20"
+    },
+    {
+      "folder": "cam40",
+      "device_id": "cam41",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 21"
+    },
+    {
+      "folder": "cam41",
+      "device_id": "cam42",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 22"
+    },
+    {
+      "folder": "cam42",
+      "device_id": "cam43",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 23"
+    },
+    {
+      "folder": "cam43",
+      "device_id": "cam44",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 24"
+    },
+    {
+      "folder": "cam44",
+      "device_id": "cam45",
+      "family": "RealSense",
+      "height": "eye level",
+      "family_view": "RealSense view 25"
+    }
+  ]
+}

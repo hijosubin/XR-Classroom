@@ -30,6 +30,8 @@ Recommended: a short looping GIF/MP4 of a 4DGS free-viewpoint render (camera orb
 
 ## 📢 News
 
+- **[2026.11]** Evaluation views updated to Test sets A and B (three ceiling + three eye-level views each), and a mapping from data folders to device IDs added ([`camera_ids.json`](camera_ids.json)).
+- **[2026.11]** XR Classroom received the **Best Research Award** at the 2026 Annual Research Review of the Department of Immersive Media Engineering, Sungkyunkwan University.
 - **[2026.10]** Dataset documentation and data packages for Scenarios 1 and 2 (single frame, compatible, original) released. Trained 3DGS models are coming soon.
 - **[2026.08]** XR Classroom was presented at the 2026 KACE Summer Conference (Korean Association of Computer Education).
 
@@ -41,7 +43,7 @@ Recommended: a short looping GIF/MP4 of a 4DGS free-viewpoint render (camera orb
 - **Heterogeneous camera rig:** Ceiling-mounted Basler industrial cameras and eye-level Intel RealSense cameras with different resolutions, fields of view, and color responses.
 - **44 synchronized surrounding views:** All cameras face the center of the classroom and surround it from all sides at two different heights.
 - **Original and compatible versions:** The original heterogeneous videos, plus a version with all views unified to 1920 × 1080 for existing training pipelines.
-- **Built for 3D/4D Gaussian Splatting:** Supports static 3DGS and dynamic 4DGS training, with a recommended held-out evaluation split for novel view synthesis.
+- **Built for 3D/4D Gaussian Splatting:** Supports static 3DGS and dynamic 4DGS training, with two recommended sets of held-out views for novel view synthesis.
 
 ---
 
@@ -61,8 +63,8 @@ Recommended: a short looping GIF/MP4 of a 4DGS free-viewpoint render (camera orb
 <p align="center"><em>Reconstructed classroom point cloud with estimated camera poses.</em></p>
 
 ### Multi-View Samples
-<p align="center"><img src="images/multiview_grid.png" width="95%" alt="Multi-view samples"></p>
-<p align="center"><em>The same synchronized frame of Scenario 2 from all 44 views. The first 19 views (row-major order) are ceiling-mounted Basler cameras; the remaining 25 are eye-level RealSense cameras.</em></p>
+<p align="center"><img src="images/multiview_atlas.jpg" width="100%" alt="All 44 views labeled by folder and camera type"></p>
+<p align="center"><em>One synchronized frame of Scenario 2 from all 44 views. Each label gives the data folder and the camera type and height: ceiling-mounted Basler cameras (<code>cam01</code>–<code>cam19</code>) and eye-level RealSense cameras (<code>cam20</code>–<code>cam44</code>). The two types differ in viewpoint height, field of view, and color response. Device IDs are listed under Camera Indexing.</em></p>
 
 ### Reconstruction
 <p align="center"><img src="images/render.png" width="80%" alt="Render result"></p>
@@ -101,7 +103,7 @@ A total of 45 cameras were installed: 20 Basler and 25 RealSense. The dataset co
 - **Modality:** RGB only. Depth streams of the RealSense cameras and audio are not included.
 - **Camera arrangement:** All cameras face the center of the lecture space, and their positions and orientations are fixed during capture.
 - **Acquisition:** The cameras are distributed across 9 camera servers (5 cameras each) and captured simultaneously.
-- **Synchronization:** Cameras of the same type are synchronized by our in-house software. Across the two camera types, frames are aligned afterward using the moment the room lights are switched off as a common event.
+- **Synchronization:** Cameras of the same type are synchronized by our in-house software. Across the two camera types, frames are aligned afterward using a common event visible to all cameras: one studio light (ML100Bi) switched off once, while the classroom ceiling lights stayed on.
 
 ---
 
@@ -143,7 +145,7 @@ All packages are available in the [dataset folder](http://gofile.me/6uap5/0BDK8P
 | Multi-view video | RGB videos from 44 views (original / compatible versions, no audio) |
 | Camera parameters | Per-view intrinsic and extrinsic parameters estimated with COLMAP (`sparse/0`), plus `poses_bounds.npy` for the compatible version |
 | Supported training | Static-frame 3DGS and dynamic-sequence 4DGS |
-| Evaluation split | Recommended held-out views (see below) |
+| Evaluation views | Two recommended sets of held-out views (see below) |
 
 Each scenario folder contains the packages below. Start with the single-frame package if your connection is slow. Large packages are split into parts so that each file can be downloaded separately. Compatible parts 01–04 contain `cam01`–`cam11`, `cam12`–`cam22`, `cam23`–`cam33`, and `cam34`–`cam44`; the original package is split into Basler (`cam01`–`cam19`) and RealSense (`cam20`–`cam44`). File sizes are shown as displayed by the download server (1 GB = 1024³ bytes, 1 MB = 1024² bytes).
 
@@ -201,25 +203,30 @@ For questions or collaboration, please contact [josubin@skku.edu](mailto:josubin
 - **Compatible version:** All views are unified to 1920 × 1080 for existing dynamic-scene pipelines that assume the same input resolution. The Basler 1952 × 1088 frames are center-cropped by 16 pixels on the left and right and 4 pixels on the top and bottom, and all views are then **undistorted to a `PINHOLE` model** (principal point at the image center, per-camera focal length; at most 2.1% zoom, no black borders). Camera parameters are provided as a COLMAP model (`sparse/0`) and as `poses_bounds.npy` (N3DV/LLFF format, one row per camera from `cam01` to `cam44`, with per-camera focal length).
 - **Color:** All versions keep the **original captured colors**. No color correction is applied, so the color differences between camera types are preserved for research on heterogeneous-camera pipelines.
 
-### Recommended Evaluation Split
+### Recommended Evaluation Views
 
-For quantitative evaluation of novel view synthesis, the center view of each Basler wall rig is held out:
+Two sets of held-out views are defined. Each holds out three ceiling (Basler) and three eye-level (RealSense) views, and the remaining 38 views form the training pool.
 
-- **Held-out views:** `cam03`, `cam12`, `cam17` (Basler views 03, 13, and 18)
-- **Training views:** All remaining 41 views
+| Test set | Rule | Folders (use in code) | Device IDs |
+|---|---|---|---|
+| A (standard) | every 8th view in folder order (llffhold = 8) | `cam01`, `cam09`, `cam17`, `cam25`, `cam33`, `cam41` | cam01, cam10, cam18, cam26, cam34, cam42 |
+| B (height-matched) | Basler views at the centers of the rig sides + RealSense views facing the same directions | `cam03`, `cam12`, `cam17`, `cam22`, `cam37`, `cam43` | cam03, cam13, cam18, cam23, cam38, cam44 |
 
-The fourth center view (Basler view 08) is excluded from the dataset because of a capture error. Under this protocol, the RGB frames of the held-out views must not be used for initial point generation, color correction, or model optimization; use them only to evaluate novel view synthesis after training.
+Test set A follows the common novel-view-synthesis convention and suits comparisons with other methods. Test set B compares ceiling and eye-level views of the same scene regions and suits studies of camera height and camera type. The RGB frames of the held-out views must not be used for initial point generation, color correction, or model optimization; use them only to evaluate novel view synthesis after training. Please report results for each held-out view together with the means, because PSNR differs by several decibels between held-out views.
 
-Note: the provided COLMAP 3D points (`points3D.txt`) were triangulated from all 44 views, including the held-out views. Camera poses of the held-out views are required for evaluation and are not affected. For a strict protocol, re-triangulate the points from the 41 training views with the provided poses fixed (e.g., COLMAP `point_triangulator`). A training-view-only point cloud will be added in a future release.
+Earlier versions of this README recommended holding out only the three Basler views `cam03`, `cam12`, and `cam17`; Test set B contains these three views.
+
+Note: the provided COLMAP 3D points (`points3D.txt`) were triangulated from all 44 views, including the held-out views. Camera poses of the held-out views are required for evaluation and are not affected. For a strict protocol, re-triangulate the points from the 38 training views with the provided poses fixed (e.g., COLMAP `point_triangulator`). A training-view-only point cloud will be added in a future release.
 
 ### Camera Indexing
 
-Views are stored as `cam01` to `cam44` in the Neural 3D Video (N3DV) layout, so the data can be loaded directly by N3DV-compatible 3D/4D Gaussian Splatting code. Basler and RealSense cameras were originally numbered separately; the mapping is provided in `cameras.csv` in each package.
+Views are stored as `cam01` to `cam44` in the Neural 3D Video (N3DV) layout, so the data can be loaded directly by N3DV-compatible 3D/4D Gaussian Splatting code. The folders number the 44 recorded views consecutively. Device IDs label the 45 installed cameras: Basler `cam01`–`cam20` and RealSense `cam21`–`cam45`, where Basler `cam08` recorded no data. Folder `camN` therefore equals device `camN` for N ≤ 7, and device = folder + 1 for N ≥ 8. [`camera_ids.json`](camera_ids.json) lists every folder with its device ID and its per-family view number, and `cameras.csv` in each package gives the same mapping.
 
-| Folders | Camera type | Original view numbers |
-|---|---|---|
-| `cam01` – `cam19` | Basler (ceiling) | Basler views 01–07, 09–20 (view 08 excluded) |
-| `cam20` – `cam44` | RealSense (eye level) | RealSense views 01–25 |
+| Folders | Camera type | Device IDs | Per-family view numbers |
+|---|---|---|---|
+| `cam01` – `cam07` | Basler (ceiling) | cam01 – cam07 | Basler views 01–07 |
+| `cam08` – `cam19` | Basler (ceiling) | cam09 – cam20 | Basler views 09–20 (view 08 excluded) |
+| `cam20` – `cam44` | RealSense (eye level) | cam21 – cam45 | RealSense views 01–25 |
 
 The cameras were not moved between the two scenarios (frame-to-frame image registration between Scenario 1 and Scenario 2 shows a maximum shift of 0.09 px across all 44 views), so both scenarios share the same camera parameters. The cameras are static, so each COLMAP model contains one image entry per camera (named `camNN.png`) that applies to every frame `camNN/0000.png` – `camNN/0299.png`. In the single-frame package the images are stored as `images/camNN.png`, so the folder can be used directly with the original 3DGS code (`train.py -s <folder>`).
 
