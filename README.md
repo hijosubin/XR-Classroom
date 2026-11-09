@@ -17,14 +17,10 @@ Soo-Been Jo<sup>1</sup> · Yeongil Ryu<sup>1</sup> · Isaac Yang<sup>1</sup> · 
 
 </div>
 
-<!--
-TEASER: uncomment after adding the file.
-Recommended: a short looping GIF/MP4 of a 4DGS free-viewpoint render (camera orbiting while the lecturer moves), ~800 px wide, < 10 MB.
-
 <p align="center">
-  <img src="images/teaser.gif" width="90%" alt="XR Classroom teaser">
+  <img src="images/teaser.gif" width="90%" alt="Free-viewpoint rendering of Scenario 2 from the ceiling view to a learner's seat">
 </p>
--->
+<p align="center"><em>Free-viewpoint rendering (Ex4DGS, Scenario 2): the virtual camera moves from a ceiling view to a learner's seat while the lesson continues.</em></p>
 
 ---
 
